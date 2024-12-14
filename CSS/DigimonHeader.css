@@ -1,22 +1,22 @@
-/* Header Container */
+
 .digimon-header {
-    position: fixed; /* Fixes the header at the top */
-    top: 0; /* Ensures it sticks to the top */
+    position: fixed; 
+    top: 0; 
     left: 0;
-    width: 100%; /* Spans the entire width */
-    background: linear-gradient(90deg, #0f0c29, #302b63, #24243e); /* Digital look */
+    width: 100%; 
+    background: linear-gradient(90deg, #0f0c29, #302b63, #24243e); 
     color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0; /* Adjust padding for a clean look */
+    padding: 20px 0; 
     border-bottom: 4px solid #00e6e6;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    z-index: 1000; /* Keeps it above other elements */
+    z-index: 1000; 
   }
   
-  /* Logo */
+ 
   .header-logo .logo {
     width: 120px;
     height: auto;
@@ -24,7 +24,7 @@
     border: none;
   }
   
-  /* Title */
+  
   .header-title h1 {
     font-family: 'Press Start 2P', monospace;
     font-size: 2.5rem;
@@ -40,7 +40,7 @@
     text-shadow: 2px 2px 0px #24243e;
   }
   
-  /* Navigation */
+  
   .header-nav .nav-links {
     list-style: none;
     display: flex;
@@ -49,22 +49,22 @@
     padding: 0;
   }
   
-  .header-nav .nav-links li a {
+  /* .header-nav .nav-links li a {
     text-decoration: none;
     font-family: 'Press Start 2P', monospace;
     font-size: 1rem;
     color: #00ffcc;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
-  }
+  } */
   
-  .header-nav .nav-links li a:hover {
+  /* .header-nav .nav-links li a:hover {
     color: #ffcc00;
     border-bottom: 2px solid #ffcc00;
   }
-  
-  /* Add spacing for content to avoid overlap */
+   */
+/*   
   main {
-    margin-top: 120px; /* Ensure content starts below the fixed header */
+    margin-top: 120px; 
   }
-  
+   */

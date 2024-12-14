@@ -1,16 +1,24 @@
+* {
+  border: none;
+  outline: none;
+  box-shadow: none; /* Remove any shadows */
+  border-radius: 0; /* Remove any rounded corners */
+}
 body {
     width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #000;
-    --bg: #2d2e2e;
+    border: none;
+    --bg: #302b63;
     --button: #2d53fc;
     --contrast: #454545;
     --screen: #aab368;
     background: var(--bg);
+    position: relative; 
   }
+  
   
   .digivice-container {
     position: relative;

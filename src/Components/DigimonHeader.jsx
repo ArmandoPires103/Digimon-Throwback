@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "/CSS/DigimonHeader.css"; // Include your Digimon-themed CSS styles here
 
 const DigimonHeader = () => {
@@ -17,18 +18,15 @@ const DigimonHeader = () => {
       </div>
       <nav className="header-nav">
         <ul className="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#digimon">Digimon</a></li>
-          <li><a href="#adventure">Adventure</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><Link to="/">Digimon</Link></li>
+          <li><Link to="/adventure">Adventure</Link></li>
+          <li><Link to="/quiz">Quiz</Link></li>
+          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </nav>
-      {/* <main>
-        <h2>Welcome to the Digital World!</h2>
-        <p>Explore, battle, and discover your favorite Digimon.</p>
-      </main> */}
     </header>
   );
 };
 
 export default DigimonHeader;
+

@@ -1,0 +1,60 @@
+/* 90s-style Digimon Adventure Timeline */
+
+body {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .digimon-adventure {
+    text-align: center;
+    padding: 20px;
+    margin-top: 500px;
+  }
+  
+  .title {
+    font-size: 36px;
+    color: #ff4500;
+    text-shadow: 2px 2px 4px #ffcc00;
+    margin-bottom: 20px;
+    border-bottom: 3px dotted #ff4500;
+    display: inline-block;
+  }
+  
+  .timeline {
+    margin: 0 auto;
+    padding: 10px;
+    width: 80%;
+    border: 5px double #00f;
+    background-color: #222;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .timeline-item {
+    margin: 20px 0;
+    padding: 10px;
+    border: 3px dashed #00ff00;
+    background-color: #333;
+    color: #fff;
+  }
+  
+  .timeline-item:hover {
+    background-color: #444;
+    border-color: #ff69b4;
+  }
+  
+  .year {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  
+  .event {
+    font-size: 18px;
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #dcdcdc;
+  }
+  
