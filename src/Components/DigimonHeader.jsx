@@ -21,7 +21,7 @@ const DigimonHeader = () => {
           <li><Link to="/">Digimon</Link></li>
           <li><Link to="/adventure">Adventure</Link></li>
           <li><Link to="/quiz">Quiz</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          
         </ul>
       </nav>
     </header>
