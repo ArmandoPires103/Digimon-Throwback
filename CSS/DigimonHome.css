@@ -1,273 +1,60 @@
-* {
-  border: none;
-  outline: none;
-  box-shadow: none; /* Remove any shadows */
-  border-radius: 0; /* Remove any rounded corners */
+.digimon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Use auto-fill to create responsive grid */
+  gap: 30px; /* Space between grid items */
+  margin: 20px;
+  padding: 50px;
+  justify-items: center; /* Center items within each grid cell */
+  margin-top: 160px;
 }
-body {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    --bg: #302b63;
-    --button: #2d53fc;
-    --contrast: #454545;
-    --screen: #aab368;
-    background: var(--bg);
-    position: relative; 
-  }
-  
-  
-  .digivice-container {
-    position: relative;
-    margin-top: 100px;
-    margin-left: 20px;
-  }
-  
-  .digivice-container__cut {
-    position: absolute;
-    width: 150px;
-    height: 200px;
-    border-radius: 90%;
-    background: var(--bg);
-    z-index: 2;
-  }
-  
-  .digivice-container__cut--left-top {
-    top: -130px;
-    left: -70px;
-    transform: rotate(-35deg);
-    overflow: hidden;
-  }
-  
-  .wireless {
-    position: absolute;
-    width: 80px;
-    height:40px;
-    bottom: -5px;
-    left: 35px;
-    border-radius: 40%;
-    transform: rotate(80deg);
-    background: var(--contrast);
-  }
-  
-  .digivice-container__cut--left-bottom {
-    bottom: -130px;
-    left: -70px;
-    transform: rotate(35deg);
-  }
-  
-  .digivice-container__cut--right-top {
-    top: -130px;
-    right: -70px;
-    transform: rotate(35deg);
-  }
-  
-  .digivice-container__cut--right-bottom {
-    bottom: -130px;
-    right: -70px;
-    transform: rotate(-35deg);
-  }
-  
-  .digivice {
-    width: 350px;
-    height: 310px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 45%;
-    position: relative;
-    background: #fc971c;
-    overflow: hidden;
-  }
-  
-  .digivice__detail {
-    position: absolute;
-    border: 2px solid var(--contrast);
-    background: #d17708;
-  }
-  
-  .digivice__detail--h {
-    width: 50px;
-    height: 30px;
-  }
-  
-  .digivice__detail--v {
-    width: 30px;
-    height: 50px;
-  }
-  
-  .digivice__detail--left {
-    top: calc(50% - 15px);
-    left: -4px;
-  }
-  
-  .digivice__detail--right-a {
-    top: 98px;
-    right: -5px;
-  }
-  
-  .digivice__detail--right-b {
-    bottom: 98px;
-    right: -5px;
-  }
-  
-  .digivice__detail--top-left {
-    top: -30px;
-    left: 120px;
-  }
-  
-  .digivice__detail--top-right {
-    top: -30px;
-    right: 120px;
-  }
-  
-  .digivice__detail--bottom-left {
-    bottom: -30px;
-    left: 120px;
-  }
-  
-  .digivice__detail--bottom-right {
-    bottom: -30px;
-    right: 120px;
-  }
-  
-  .digivice__circle {
-    border: 2px solid var(--contrast);
-    width: 230px;
-    height: 230px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  
-  .digivice__button {
-    position: absolute;
-    border: 2px solid var(--contrast);
-    --width: 60px;
-    --height: 60px;
-    width: var(--width);
-    height: var(--height);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #1a3fe8;
-    z-index: 2;
-  }
-  
-  .digivice__button--digital {
-    top: calc(50% - var(--height) / 2);
-    left: 18px;
-  }
-  
-  .digivice__button--digital:hover {
-    cursor: pointer;
-  }
-  
-  .digivice__button--digital::before {
-    content: '';
-    display: block;
-    width: calc(var(--width) - 10px);
-    height: calc(var(--height) - 10px);
-    border-radius: 50%;
-    border: 2px solid var(--contrast);
-    background: var(--button);
-  }
-  
-  .digivice__button--digital::after {
-    content: '';
-    display: block;
-    width: calc(var(--width) - 30px);
-    height: calc(var(--height) - 30px);
-    border-radius: 50%;
-    border: 1px solid var(--contrast);
-    position: absolute;
-    background: #1a3fe8;
-  }
-  
-  .digivice__button--a {
-    --width: 60px;
-    --height: 45px;
-    top: 90px;
-    right: 25px;
-  }
-  
-  .digivice__button--a::after {
-    content: '';
-    display: block;
-    width: calc(var(--width) - 10px);
-    height: calc(var(--height) - 10px);
-    border-radius: 50%;
-    border: 2px solid var(--contrast);
-    background: var(--button);
-  }
-  
-  .digivice__button--b {
-    bottom: 90px;
-    --width: 60px;
-    --height: 45px;
-    right: 25px;
-  }
-  
-  .digivice__button--b::after {
-    content: '';
-    display: block;
-    width: calc(var(--width) - 10px);
-    height: calc(var(--height) - 10px);
-    border-radius: 50%;
-    border: 2px solid var(--contrast);
-    background: var(--button);
-  }
-  
-  .digivice__circle::after {
-    content: '';
-    display: block;
-    border: 2px solid var(--contrast);
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    position: absolute;
-    background: #f6ae4f;
-  }
-  
-  .digivice__inner-circle {
-    border: 2px solid var(--contrast);
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #333;
-    z-index: 2;
-  }
-  
-  #toggle {
-    display: none;  
-  }
-  
-  .digivice__screen {
-    border: 2px solid var(--contrast);
-    width: 100px;
-    height: 100px;
-    background: var(--screen);
-  }
-  
-  @keyframes call {
-    0% {
-      background: var(--screen);
-    }
-    100% {
-      background: #f51155;
-    }
-  }
-  
-  #toggle:checked ~ .digivice__screen {
-    animation: call .5s 1s infinite alternate;
-  }
-  
+
+.digimon-card {
+  background-color: #222;
+  border: 3px solid #00ffcc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.digimon-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.digimon-card img {
+  width: 100px; /* Adjust image size */
+  height: 100px;
+  margin-bottom: 10px;
+  filter: drop-shadow(2px 2px #ff33cc);
+}
+
+.digimon-card h2 {
+  color: #ffcc00;
+  margin: 30px 0;
+}
+
+.digimon-card p {
+  color: #fff;
+}
+.filter-bar {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-filter {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 200px;
+}
+
+.level-filter option {
+  padding: 10px;
+  font-size: 14px;
+}

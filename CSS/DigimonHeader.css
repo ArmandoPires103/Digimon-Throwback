@@ -49,22 +49,22 @@
     padding: 0;
   }
   
-  /* .header-nav .nav-links li a {
+  .header-nav .nav-links li a {
     text-decoration: none;
     font-family: 'Press Start 2P', monospace;
     font-size: 1rem;
     color: #00ffcc;
     border-bottom: 2px solid transparent;
     transition: all 0.3s ease;
-  } */
+  }
   
-  /* .header-nav .nav-links li a:hover {
+  .header-nav .nav-links li a:hover {
     color: #ffcc00;
     border-bottom: 2px solid #ffcc00;
   }
-   */
-/*   
+  
+  
   main {
     margin-top: 120px; 
   }
-   */
+  

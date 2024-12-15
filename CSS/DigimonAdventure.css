@@ -2,7 +2,7 @@
 
 body {
     font-family: "Comic Sans MS", cursive, sans-serif;
-    background-color: #000;
+    background-color: #000000;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -11,7 +11,7 @@ body {
   .digimon-adventure {
     text-align: center;
     padding: 20px;
-    margin-top: 500px;
+    margin-top: 260px;
   }
   
   .title {

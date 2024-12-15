@@ -1,104 +1,90 @@
-import React from "react";
-import { useEffect, useState } from "react";
-import "/CSS/DigimonHome.css"; // Add your CSS file path
+import React, { useEffect, useState } from "react";
+import "/CSS/DigimonHome.css"; // Ensure your CSS file is correctly linked
 
 const DigimonHome = () => {
- // State and Fetch Logic
- const [digimons, setDigimons] = useState([]);
- const [error, setError] = useState(null);
- const [loading, setLoading] = useState(true);
- const [search, setSearch] = useState("");
+  const [digimons, setDigimons] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedLevel, setSelectedLevel] = useState("");
+  const [filteredDigimons, setFilteredDigimons] = useState([]);
 
- useEffect(() => {
-   fetch("https://digimon-api.vercel.app/api/digimon")
-     .then((response) => {
-       if (!response.ok) {
-         throw new Error("Failed to fetch Digimon data.");
-       }
-       return response.json();
-     })
-     .then((data) => {
-       setDigimons(data);
-       setLoading(false);
-     })
-     .catch((err) => {
-       setError(err.message);
-       setLoading(false);
-     });
- }, []);
+  useEffect(() => {
+    fetch("https://digimon-api.vercel.app/api/digimon")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch Digimon data.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Fetched Digimons:", data); // Log the data to ensure it's correct
+        setDigimons(data);
+        setLoading(false);
+        setFilteredDigimons(data); // Initially, set all Digimons
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
- const handleSearch = () => {
-   if (!search) return;
-   setLoading(true);
-   fetch(`https://digimon-api.vercel.app/api/digimon/name/${search}`)
-     .then((response) => {
-       if (!response.ok) {
-         throw new Error("Digimon not found!");
-       }
-       return response.json();
-     })
-     .then((data) => {
-       setDigimons(Array.isArray(data) ? data : [data]);
-       setLoading(false);
-     })
-     .catch((err) => {
-       setError(err.message);
-       setLoading(false);
-     });
- };
+  const handleFilterChange = (e) => {
+    const level = e.target.value;
+    setSelectedLevel(level);
+    console.log("Dropdown value changed:", level); // Check the dropdown value
 
- return (
-   <div className="adventure-container">
-     {/* Digivice Home Section */}
-     <div className="digivice-container">
-       <div className="digivice-container__cut digivice-container__cut--left-top">
-         <div className="wireless"></div>
-       </div>
-       <div className="digivice-container__cut digivice-container__cut--left-bottom"></div>
-       <div className="digivice-container__cut digivice-container__cut--right-top"></div>
-       <div className="digivice-container__cut digivice-container__cut--right-bottom"></div>
-       <div className="digivice">
-         <label className="digivice__button digivice__button--digital" htmlFor="toggle"></label>
-         <div className="digivice__button digivice__button--a"></div>
-         <div className="digivice__button digivice__button--b"></div>
-         <div className="digivice__detail digivice__detail--h digivice__detail--left"></div>
-         <div className="digivice__circle">
-           <div className="digivice__inner-circle">
-             <input type="checkbox" id="toggle" />
-             <div className="digivice__screen"></div>
-           </div>
-         </div>
-       </div>
-     </div>
+    if (level) {
+      setFilteredDigimons(digimons.filter((digimon) => digimon.level === level));
+    } else {
+      setFilteredDigimons(digimons); // Show all Digimons if no filter is selected
+    }
+  };
 
-     {/* Digimon World Section */}
-     <div className="container">
-       <h1>Digimon Adventure</h1>
-       <div className="search-bar">
-         <input
-           type="text"
-           placeholder="Search Digimon by Name"
-           value={search}
-           onChange={(e) => setSearch(e.target.value)}
-         />
-         <button onClick={handleSearch}>Search</button>
-       </div>
+  return (
+    <div className="adventure-container">
+      {/* Header Section with Filter */}
+      <header className="digivice-container">
+        {/* Filter Dropdown for Level */}
+        <div className="filter-bar">
+          <select
+            value={selectedLevel}
+            onChange={handleFilterChange}
+            className="level-filter"
+          >
+            <option value="">Filter by Level</option>
+            <option value="Rookie">Rookie</option>
+            <option value="Champion">Champion</option>
+            <option value="Ultimate">Ultimate</option>
+            <option value="Mega">Mega</option>
+          </select>
+        </div>
+      </header>
 
-       {loading && <p className="loading">Loading...</p>}
-       {error && <p className="error">{error}</p>}
+      {/* Digimon World Section */}
+      <div className="container">
+        <h1>Digimon Adventure</h1>
 
-       <div className="digimon-grid">
-         {digimons.map((digimon, index) => (
-           <div key={index} className="digimon-card">
-             <img src={digimon.img} alt={digimon.name} />
-             <h2>{digimon.name}</h2>
-             <p>Level: {digimon.level}</p>
-           </div>
-         ))}
-       </div>
-     </div>
-   </div>
- );
+        {loading && <p className="loading">Loading...</p>}
+        {error && <p className="error">{error}</p>}
+
+        {/* Display Digimons */}
+        <div className="digimon-grid">
+          {filteredDigimons.length === 0 ? (
+            <p>No Digimons match the selected level.</p>
+          ) : (
+            filteredDigimons.map((digimon, index) => (
+              <div key={index} className="digimon-card">
+                <img src={digimon.img} alt={digimon.name} />
+                <h2>{digimon.name}</h2>
+                <p>Level: {digimon.level}</p>
+              </div>
+            ))
+          )}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default DigimonHome;
+
