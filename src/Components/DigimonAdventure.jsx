@@ -2,7 +2,11 @@ import React from "react";
 import "/CSS/DigimonAdventure.css";
 
 const digimonTimeline = [
-  { year: "1999", event: "The DigiDestined are chosen and sent to the Digital World for the first time." },
+  { 
+    year: "1999", 
+    event: "The DigiDestined are chosen and sent to the Digital World for the first time.", 
+    video: "https://www.youtube.com/embed/VNikMi0b24M" 
+  },
   { year: "2000", event: "Apocalymon is defeated, and the DigiDestined return to the real world." },
   { year: "2002", event: "A new generation of DigiDestined emerges to battle the Digimon Emperor." },
   { year: "2003", event: "The gates to the Digital World are sealed to protect both worlds." },
@@ -20,6 +24,19 @@ const DigimonAdventure = () => {
           <div className="timeline-item" key={index}>
             <span className="year">{item.year}</span>
             <p className="event">{item.event}</p>
+            {item.video && (
+              <div className="video-container">
+                <iframe
+                  width="560"
+                  height="315"
+                  src={item.video}
+                  title={`Digimon Adventure ${item.year}`}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -28,3 +45,4 @@ const DigimonAdventure = () => {
 };
 
 export default DigimonAdventure;
+
