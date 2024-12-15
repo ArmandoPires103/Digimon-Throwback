@@ -1,65 +1,73 @@
 import React, { useState } from 'react';
-import "/CSS/DigimonQuiz.css"
+import "/CSS/DigimonQuiz.css";
 
 const DigimonQuiz = () => {
-  // Define quiz questions and possible answers with associated Digimon
   const questions = [
     {
       question: "What's your favorite type of environment?",
       options: [
-        { answer: "Forest", digimon: "Agumon" },
-        { answer: "Ocean", digimon: "Gabumon" },
-        { answer: "City", digimon: "Patamon" },
-        { answer: "Mountains", digimon: "Tentomon" },
+        { answer: "Forest", digimon: "Agumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222225/agumon_f3qkhx.jpg" },
+        { answer: "Ocean", digimon: "Gabumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222227/gabumon_mngqav.jpg" },
+        { answer: "City", digimon: "Patamon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222230/patamon_adihiw.jpg" },
+        { answer: "Mountains", digimon: "Tentomon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222235/tentomon_ziiats.jpg" },
       ],
     },
     {
       question: "What's your strongest trait?",
       options: [
-        { answer: "Bravery", digimon: "Greymon" },
-        { answer: "Wisdom", digimon: "Tentomon" },
-        { answer: "Kindness", digimon: "Gabumon" },
-        { answer: "Curiosity", digimon: "Agumon" },
+        { answer: "Bravery", digimon: "Greymon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222242/greymon_jh2a2e.jpg" },
+        { answer: "Wisdom", digimon: "Tentomon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222235/tentomon_ziiats.jpg" },
+        { answer: "Kindness", digimon: "Gabumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222227/gabumon_mngqav.jpg" },
+        { answer: "Curiosity", digimon: "Agumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222225/agumon_f3qkhx.jpg" },
       ],
     },
     {
       question: "How do you prefer to approach a challenge?",
       options: [
-        { answer: "Fight head-on", digimon: "Agumon" },
-        { answer: "Strategize first", digimon: "Gabumon" },
-        { answer: "Take time to observe", digimon: "Tentomon" },
-        { answer: "Work with others", digimon: "Patamon" },
+        { answer: "Fight head-on", digimon: "Agumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222225/agumon_f3qkhx.jpg" },
+        { answer: "Strategize first", digimon: "Gabumon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222227/gabumon_mngqav.jpg" },
+        { answer: "Take time to observe", digimon: "Tentomon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222235/tentomon_ziiats.jpg" },
+        { answer: "Work with others", digimon: "Patamon", imgSrc: "https://res.cloudinary.com/dhexjuuzd/image/upload/v1734222230/patamon_adihiw.jpg" },
       ],
     },
   ];
 
-  // State to store user's answers
   const [answers, setAnswers] = useState([]);
+  const [finalDigimon, setFinalDigimon] = useState(null);
 
-  // Function to handle answer selection
-  const handleAnswerSelection = (questionIndex, digimon) => {
+  const handleAnswerSelection = (questionIndex, digimon, imgSrc) => {
     const newAnswers = [...answers];
-    newAnswers[questionIndex] = digimon;
+    newAnswers[questionIndex] = { digimon, imgSrc };
     setAnswers(newAnswers);
   };
 
-  // Calculate the result based on answers
-  const calculateResult = () => {
-    // Count occurrences of each Digimon
-    const digimonCount = {};
-    answers.forEach((digimon) => {
-      if (digimon) {
-        digimonCount[digimon] = (digimonCount[digimon] || 0) + 1;
-      }
-    });
+  const calculateFinalResult = () => {
+    if (answers.length === questions.length) {
+      const digimonCount = {};
+      answers.forEach((answer) => {
+        if (answer) {
+          digimonCount[answer.digimon] = (digimonCount[answer.digimon] || 0) + 1;
+        }
+      });
 
-    // Sort Digimons based on frequency, then get the top 9 Digimons
-    const sortedDigimons = Object.keys(digimonCount)
-      .sort((a, b) => digimonCount[b] - digimonCount[a])
-      .slice(0, 9); // Select top 9 Digimons
-
-    return sortedDigimons;
+      const finalResult = Object.keys(digimonCount).sort(
+        (a, b) => digimonCount[b] - digimonCount[a]
+      )[0];
+      setFinalDigimon(finalResult);
+    }
   };
+
+  const getDigimonImage = (digimon) => {
+    for (const question of questions) {
+      const match = question.options.find((option) => option.digimon === digimon);
+      if (match) {
+        return match.imgSrc;
+      }
+    }
+    return null;
+  };
+
+  const isQuizCompleted = answers.length === questions.length;
 
   return (
     <div className="quiz-container">
@@ -71,33 +79,29 @@ const DigimonQuiz = () => {
             {question.options.map((option, index) => (
               <button
                 key={index}
-                onClick={() => handleAnswerSelection(questionIndex, option.digimon)}
+                onClick={() => handleAnswerSelection(questionIndex, option.digimon, option.imgSrc)}
                 className="option-button"
               >
                 {option.answer}
               </button>
             ))}
           </div>
+          {answers[questionIndex] && (
+            <div className="answer-img-container">
+              <img
+                src={answers[questionIndex].imgSrc}
+                alt={answers[questionIndex].digimon}
+                className="answer-img"
+              />
+              <p>{answers[questionIndex].digimon}</p>
+            </div>
+          )}
         </div>
       ))}
 
-      {answers.length === questions.length && (
-        <div className="result-container">
-          <h2>Your compatible Digimons are:</h2>
-          <div className="result-grid">
-            {calculateResult().map((digimon, index) => (
-              <div key={index} className="result-item">
-                <img
-                  src={`https://www.digimonwiki.com/wiki/File:${digimon}.png`} // Example Digimon image URL
-                  alt={digimon}
-                  className="digimon-image"
-                />
-                <p>{digimon}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+
+
+ 
     </div>
   );
 };
