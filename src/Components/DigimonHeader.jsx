@@ -1,25 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "/CSS/DigimonHeader.css"; // Ensure the path matches your project structure
+import "/CSS/DigimonHeader.css"; 
 
 const DigimonHeader = () => {
   return (
     <header className="digimon-header">
-      {/* Left Digivice */}
-      <div className="digivice-container left-digivice">
-        <div className="digivice-container__cut digivice-container__cut--left-top">
-          <div className="wireless"></div>
-        </div>
-        <div className="digivice-container__cut digivice-container__cut--left-bottom"></div>
-        <div className="digivice">
-          <div className="digivice__circle">
-            <div className="digivice__inner-circle">
-              <div className="digivice__screen"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Header Logo and Title */}
       <div className="header-content">
         <div className="header-logo">
@@ -40,21 +25,6 @@ const DigimonHeader = () => {
             <li><Link to="/quiz">Quiz</Link></li>
           </ul>
         </nav>
-      </div>
-
-      {/* Right Digivice */}
-      <div className="digivice-container right-digivice">
-        <div className="digivice-container__cut digivice-container__cut--right-top">
-          <div className="wireless"></div>
-        </div>
-        <div className="digivice-container__cut digivice-container__cut--right-bottom"></div>
-        <div className="digivice">
-          <div className="digivice__circle">
-            <div className="digivice__inner-circle">
-              <div className="digivice__screen"></div>
-            </div>
-          </div>
-        </div>
       </div>
     </header>
   );

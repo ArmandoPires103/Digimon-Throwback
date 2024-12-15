@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "/CSS/DigimonHome.css"; // Ensure your CSS file is correctly linked
+import "/CSS/DigimonHome.css"; 
 
 const DigimonHome = () => {
   const [digimons, setDigimons] = useState([]);
@@ -17,10 +17,10 @@ const DigimonHome = () => {
         return response.json();
       })
       .then((data) => {
-        console.log("Fetched Digimons:", data); // Log the data to ensure it's correct
+        console.log("Fetched Digimons:", data); 
         setDigimons(data);
         setLoading(false);
-        setFilteredDigimons(data); // Initially, set all Digimons
+        setFilteredDigimons(data); 
       })
       .catch((err) => {
         setError(err.message);
@@ -31,12 +31,12 @@ const DigimonHome = () => {
   const handleFilterChange = (e) => {
     const level = e.target.value;
     setSelectedLevel(level);
-    console.log("Dropdown value changed:", level); // Check the dropdown value
+    console.log("Dropdown value changed:", level); 
 
     if (level) {
       setFilteredDigimons(digimons.filter((digimon) => digimon.level === level));
     } else {
-      setFilteredDigimons(digimons); // Show all Digimons if no filter is selected
+      setFilteredDigimons(digimons); 
     }
   };
 
