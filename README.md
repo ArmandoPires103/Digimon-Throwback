@@ -34,25 +34,10 @@ yarn install
 Run the following command to start the app:
 ```
 npm start
-
 ```
-
 or
-
+```
 yarn start
-
+```
 Now you’re ready to explore the Digimon Digital World!
-
-### Technologies Used
-
-React.js: For building the user interface.
-
-CSS: For styling the application.
-
-React Router: For navigation between different pages.
-
-Cloudinary: For hosting images used in the project.
-
-
-For any inquiries or suggestions, feel free to reach out:
 
