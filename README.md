@@ -18,22 +18,24 @@ Take a quiz to see which Digimon you are compatible with.
 1. Clone the Repository
 
 To get started, clone the repository to your local machine:
-
+```
 git clone https://github.com/ArmandoPires103/Digimon-Throwback
-
+```
 2. Install Dependencies
-
+```
 npm install
-
+```
 or
-
+```
 yarn install
-
+```
 3. Start the Development Server
 
 Run the following command to start the app:
-
+```
 npm start
+
+```
 
 or
 
