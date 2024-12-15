@@ -57,4 +57,130 @@ body {
     line-height: 1.6;
     color: #dcdcdc;
   }
+  /* Default video container style */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; 
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Make iframe responsive inside the container */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+  @media (max-width: 768px) {
+    .digimon-adventure {
+      margin-top: 120px; /* Adjust spacing for smaller screens */
+      padding: 10px;
+    }
   
+    .title {
+      font-size: 28px; /* Smaller title font */
+      text-shadow: 1px 1px 3px #ffcc00;
+      margin-bottom: 15px;
+      border-bottom: 2px dotted #ff4500;
+    }
+  
+    .timeline {
+      width: 90%; /* Adjust width for better fit */
+      padding: 8px;
+      border-width: 3px; /* Reduce border thickness */
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+    }
+  
+    .timeline-item {
+      margin: 15px 0;
+      padding: 8px;
+      border-width: 2px; /* Reduce border thickness */
+      font-size: 16px;
+    }
+  
+    .year {
+      font-size: 20px; /* Smaller year font */
+    }
+  
+    .event {
+      font-size: 16px; /* Reduce event text size */
+      line-height: 1.4; /* Adjust line height for readability */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .digimon-adventure {
+      margin-top: 220px; /* Further reduce spacing for very small screens */
+      padding: 5px;
+    }
+  
+    .title {
+      font-size: 24px; /* Further reduce title size */
+      text-shadow: 1px 1px 2px #ffcc00;
+    }
+  
+    .timeline {
+      width: 95%; /* Maximize space usage */
+      padding: 5px;
+      border-width: 2px;
+    }
+  
+    .timeline-item {
+      margin: 10px 0;
+      padding: 5px;
+      font-size: 14px;
+    }
+  
+    .year {
+      font-size: 18px; /* Smaller year font for compact screens */
+    }
+  
+    .event {
+      font-size: 14px;
+      line-height: 1.3;
+    }
+  }
+  /* Media Queries for iPhones */
+
+/* iPhone SE and smaller devices (up to 375px width) */
+@media only screen and (max-width: 375px) {
+  .video-container {
+    padding-bottom: 100%; /* Switch to a square aspect ratio */
+  }
+
+  .timeline-item {
+    padding: 15px; /* Reduce padding for smaller screens */
+    font-size: 14px; /* Adjust font size for better readability */
+  }
+
+  .year {
+    font-size: 18px; /* Scale down year font */
+  }
+
+  .event {
+    font-size: 16px; /* Scale down event font */
+  }
+}
+
+/* iPhone 12, 13, and similar devices (up to 428px width) */
+@media only screen and (max-width: 428px) {
+  .video-container {
+    padding-bottom: 75%; /* Slightly taller video container */
+  }
+
+  .timeline-item {
+    padding: 20px; /* Moderate padding for readability */
+    font-size: 16px;
+  }
+
+  .year {
+    font-size: 20px;
+  }
+
+  .event {
+    font-size: 18px;
+  }
+}
