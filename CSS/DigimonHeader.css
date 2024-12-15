@@ -80,3 +80,60 @@
   right: 20px;
 }
 
+/* Media query for large screens */
+/* @media (min-width: 1200px) {
+  .digimon-header {
+    padding: 30px 0;
+  }
+
+  .header-logo .logo {
+    width: 140px;
+  }
+
+  .header-title h1 {
+    font-size: 3rem;
+    text-shadow: 5px 5px 0px #00e6e6, 8px 8px 0px #ffcc00;
+  }
+
+  .header-title .tagline {
+    font-size: 1.2rem;
+  }
+
+  .header-nav .nav-links {
+    gap: 40px;
+    margin-left: 200px;
+  }
+
+  .header-nav .nav-links li a {
+    font-size: 1.2rem;
+  }
+
+  .digivice-container {
+    margin-left: 40px;
+    padding-bottom: 250px;
+    padding-top: 50px;
+  }
+
+  .left-digivice {
+    left: 40px;
+  }
+
+  .right-digivice {
+    right: 40px;
+  }
+} */
+@media (min-width: 1600px) {
+  /* .header-title h1 {
+    font-size: 3.5rem;
+  }
+
+  .header-nav .nav-links {
+    gap: 60px;
+    margin-left: 250px;
+  } */
+
+  .digivice-container {
+    margin-left: 60px;
+    padding-bottom: 470px;
+  }
+}
